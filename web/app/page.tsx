@@ -9,9 +9,10 @@ const pillars = [
     label: "Aprender",
     title: "Educación Jurídica",
     description:
-      "Clases individuales con abogados especializados y sesiones pensadas para cada necesidad de aprendizaje.",
-    detail:
-      "Una forma cercana de profundizar en el derecho y seguir creciendo.",
+      "Clases virtuales con abogados especializados, en sesiones individuales o paquetes.",
+    image: "/educacion.jpg",
+    imageAlt: "Libro abierto en una escena de lectura y estudio.",
+    tags: ["Clases individuales", "Paquetes de formación"],
   },
   {
     id: "servicios",
@@ -19,9 +20,10 @@ const pillars = [
     label: "Orientarse",
     title: "Servicios Jurídicos Especializados",
     description:
-      "Asesorías, mentorías entre profesionales y elaboración de documentos jurídicos.",
-    detail:
-      "Conocimiento especializado para acompañar distintos retos jurídicos.",
+      "Asesorías, mentorías y redacción de documentos con el abogado que elijas.",
+    image: "/servicios.jpg",
+    imageAlt: "Profesional con traje en una oficina luminosa.",
+    tags: ["Asesorías", "Mentorías", "Documentos"],
   },
   {
     id: "comunidad",
@@ -29,9 +31,10 @@ const pillars = [
     label: "Compartir",
     title: "Comunidad Académica",
     description:
-      "Círculos de estudio, clubes jurídicos, conversatorios, talleres, seminarios y espacios de colaboración.",
-    detail:
-      "Encuentros para intercambiar ideas y construir conocimiento en conjunto.",
+      "Círculos, clubes, talleres y seminarios para aprender en conjunto.",
+    image: "/comunidad.jpg",
+    imageAlt: "Tres profesionales conversan en una sala de reuniones.",
+    tags: ["Círculos de estudio", "Talleres", "Seminarios"],
   },
 ];
 
@@ -143,15 +146,32 @@ export default function Home() {
             <div className="pillars-list">
               {pillars.map((pillar) => (
                 <article className="pillar" id={pillar.id} key={pillar.id}>
+                  <div className="pillar-image-frame">
+                    <Image
+                      src={pillar.image}
+                      alt={pillar.imageAlt}
+                      fill
+                      sizes="(max-width: 767px) 100vw, (max-width: 1023px) 40vw, 33vw"
+                      loading="lazy"
+                      className="pillar-image"
+                    />
+                  </div>
                   <div className="pillar-meta">
                     <span>{pillar.number}</span>
                     <span>{pillar.label}</span>
                   </div>
-                  <div>
+                  <div className="pillar-copy">
                     <h3>{pillar.title}</h3>
                     <p className="pillar-description">{pillar.description}</p>
                   </div>
-                  <p className="pillar-detail">{pillar.detail}</p>
+                  <ul className="pillar-tags" aria-label={`Temas de ${pillar.title}`}>
+                    {pillar.tags.map((tag) => (
+                      <li key={tag}>{tag}</li>
+                    ))}
+                  </ul>
+                  <a className="pillar-link" href="#invitacion">
+                    Conocer más <span aria-hidden="true">→</span>
+                  </a>
                 </article>
               ))}
             </div>
