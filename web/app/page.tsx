@@ -100,7 +100,7 @@ export default function Home() {
                   stroke="rgba(188, 164, 245, .42)"
                   strokeWidth="1"
                 />
-                <circle cx="450" cy="125" r="31" fill="#7952D6" />
+                <circle cx="450" cy="125" r="31" fill="#4A0A6B" />
                 <circle cx="172" cy="91" r="5" fill="#F2EDFC" />
                 <circle cx="686" cy="70" r="5" fill="#F0A168" />
                 <circle cx="626" cy="188" r="4" fill="#BCA4F5" />
@@ -114,13 +114,6 @@ export default function Home() {
                   sizes="155px"
                 />
               </span>
-              <div className="orbit-labels">
-                {pillars.map((pillar) => (
-                  <span key={pillar.number}>
-                    <b>{pillar.number}</b> {pillar.label}
-                  </span>
-                ))}
-              </div>
             </div>
           </div>
         </section>
@@ -208,39 +201,91 @@ export default function Home() {
           id="invitacion"
           aria-labelledby="audience-title"
         >
-          <div className="section-shell audience-grid">
+          <div className="section-shell audience-shell">
             <div className="audience-heading">
-              <p className="eyebrow">Un lugar para seguir creciendo</p>
-              <h2 id="audience-title">
-                El derecho también se construye en comunidad.
-              </h2>
+              <p className="eyebrow">Empieza en ORBI</p>
+              <h2 id="audience-title">Elige cómo quieres empezar.</h2>
+              <p className="audience-intro">
+                Aprende, consulta o comparte tu conocimiento con la comunidad
+                jurídica.
+              </p>
             </div>
-            <div className="audience-list">
-              <article>
-                <span className="audience-number">01</span>
-                <div>
-                  <h3>Para estudiantes</h3>
-                  <p>
-                    Acércate a nuevas perspectivas, aprende de especialistas y
-                    encuentra espacios para conversar sobre el derecho.
-                  </p>
+            <div className="audience-grid">
+              <article className="audience-card audience-card-student">
+                <div className="audience-image-frame">
+                  <Image
+                    src="/estudiante.jpg"
+                    alt="Persona trabajando con un computador portátil al aire libre."
+                    fill
+                    sizes="(min-width: 1200px) 588px, (min-width: 1024px) 50vw, 100vw"
+                    loading="lazy"
+                    className="audience-image"
+                  />
                 </div>
-                <a href="#educacion" aria-label="Ver educación jurídica">
-                  <ArrowRight size={20} aria-hidden="true" />
-                </a>
+                <div className="audience-card-panel">
+                  <p className="audience-card-label">
+                    Para estudiantes y profesionales
+                  </p>
+                  <h3>Aprende y consulta con abogados especializados</h3>
+                  <p className="audience-card-description">
+                    Reserva clases, asesorías, mentorías o redacción de
+                    documentos con el abogado que elijas.
+                  </p>
+                  <ul className="audience-card-items">
+                    <li>Clases individuales y paquetes</li>
+                    <li>Asesorías y documentos jurídicos</li>
+                    <li>Círculos, talleres y seminarios</li>
+                  </ul>
+                  <div className="audience-card-actions">
+                    {/* TODO: enlazar a registro de estudiante */}
+                    <a className="audience-button audience-button-student" href="#">
+                      Explorar abogados
+                      <span className="audience-button-arrow" aria-hidden="true">
+                        →
+                      </span>
+                    </a>
+                    <a className="audience-secondary" href="#pilares">
+                      Cómo funciona
+                    </a>
+                  </div>
+                </div>
               </article>
-              <article>
-                <span className="audience-number">02</span>
-                <div>
-                  <h3>Para profesionales</h3>
-                  <p>
-                    Comparte tu experiencia, participa en intercambios
-                    académicos y contribuye al crecimiento de la comunidad.
-                  </p>
+              <article className="audience-card audience-card-lawyer">
+                <div className="audience-image-frame">
+                  <Image
+                    src="/abogado.jpg"
+                    alt="Abogado con traje sentado frente a una mesa."
+                    fill
+                    sizes="(min-width: 1200px) 588px, (min-width: 1024px) 50vw, 100vw"
+                    loading="lazy"
+                    className="audience-image"
+                  />
                 </div>
-                <a href="#servicios" aria-label="Ver servicios jurídicos">
-                  <ArrowRight size={20} aria-hidden="true" />
-                </a>
+                <div className="audience-card-panel">
+                  <p className="audience-card-label">Para abogados</p>
+                  <h3>Comparte tu conocimiento y llega a nuevos usuarios</h3>
+                  <p className="audience-card-description">
+                    Ofrece clases, asesorías y mentorías, y dirige actividades de
+                    la comunidad académica.
+                  </p>
+                  <ul className="audience-card-items">
+                    <li>Ofrece clases y asesorías</li>
+                    <li>Mentoría a otros abogados</li>
+                    <li>Dirige círculos y talleres</li>
+                  </ul>
+                  <div className="audience-card-actions">
+                    {/* TODO: enlazar a postulación de abogado */}
+                    <a className="audience-button audience-button-lawyer" href="#">
+                      Postular mi perfil
+                      <span className="audience-button-arrow" aria-hidden="true">
+                        →
+                      </span>
+                    </a>
+                    <a className="audience-secondary" href="#pilares">
+                      Cómo funciona
+                    </a>
+                  </div>
+                </div>
               </article>
             </div>
           </div>

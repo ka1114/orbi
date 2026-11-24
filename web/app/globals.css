@@ -229,7 +229,7 @@ h3 {
 .button:focus-visible,
 .navbar a:focus-visible,
 .menu-toggle:focus-visible,
-.audience-list a:focus-visible {
+.audience-section a:focus-visible {
   outline: 3px solid var(--orange);
   outline-offset: 4px;
 }
@@ -245,28 +245,6 @@ h3 {
   padding: 128px 24px 48px;
   background: var(--gradient-brand);
   color: var(--white);
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  right: 0;
-  bottom: -64px;
-  left: 0;
-  height: 400px;
-  pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    rgba(74, 10, 107, 0) 0%,
-    rgba(122, 17, 134, 0.35) 20%,
-    rgba(176, 32, 106, 0.2) 40%,
-    rgba(214, 170, 225, 0.2) 60%,
-    rgba(240, 228, 245, 0.2) 70%,
-    rgba(240, 228, 245, 0.5) 80%,
-    var(--color-bg-light) 84%,
-    var(--color-bg-light) 100%
-  );
 }
 
 .hero-grid {
@@ -368,25 +346,6 @@ h3 {
   top: calc(50% + 28%);
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-.orbit-labels {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  justify-content: space-between;
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.orbit-labels b {
-  margin-right: 7px;
-  color: var(--lila);
-  font-weight: 500;
 }
 
 .pillars-section {
@@ -590,70 +549,231 @@ h3 {
 }
 
 .audience-section {
+  --color-text-dark: var(--ink);
+  --color-navy: var(--navy);
+  --color-purple-deep: #4a0a6b;
+  --color-orange: var(--orange);
+  --color-amber: #f9b53d;
   padding: 120px 0;
   background: var(--white);
 }
 
-.audience-grid {
-  display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  gap: 100px;
-  align-items: start;
+.audience-shell {
+  width: min(1200px, calc(100% - 64px));
+}
+
+.audience-heading {
+  max-width: 900px;
+  margin-bottom: 40px;
 }
 
 .audience-heading h2 {
-  max-width: 480px;
+  max-width: 800px;
+  margin-bottom: 14px;
 }
 
-.audience-list {
-  border-top: 1px solid var(--border);
-}
-
-.audience-list article {
-  min-height: 178px;
-  display: grid;
-  grid-template-columns: 42px 1fr 40px;
-  gap: 18px;
-  align-items: start;
-  padding: 28px 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.audience-number {
-  padding-top: 4px;
-  color: var(--purple);
-  font-family: var(--font-display);
-  font-size: 16px;
-}
-
-.audience-list h3 {
-  margin-bottom: 10px;
-  font-size: 25px;
-}
-
-.audience-list p {
-  max-width: 470px;
-  margin-bottom: 0;
+.audience-intro {
+  max-width: 680px;
+  margin: 0;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.7;
 }
 
-.audience-list a {
-  width: 36px;
-  height: 36px;
+.audience-grid {
   display: grid;
-  place-items: center;
-  border: 1px solid var(--border);
-  color: var(--purple-dark);
-  transition: color 150ms ease, background-color 150ms ease,
-    border-color 150ms ease;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
 }
 
-.audience-list a:hover {
-  border-color: var(--purple-dark);
-  background: var(--purple-dark);
+.audience-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(79, 50, 143, 0.2);
+  transition: transform 300ms ease;
+}
+
+.audience-image-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(79, 50, 143, 0.2);
+  background: #e4d3eb;
+}
+
+.audience-image {
+  object-fit: cover;
+  transition: transform 400ms ease;
+}
+
+.audience-card-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(24px, 3vw, 40px);
+}
+
+.audience-card-student .audience-card-panel {
+  background: #f0e4f5;
+  color: var(--color-text-dark);
+}
+
+.audience-card-lawyer .audience-card-panel {
+  background: var(--color-purple-deep);
   color: var(--white);
+}
+
+.audience-card-label {
+  margin-bottom: 18px;
+  color: var(--color-purple-deep);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.audience-card-lawyer .audience-card-label {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.audience-card h3 {
+  max-width: 520px;
+  margin-bottom: 16px;
+  font-size: clamp(30px, 3vw, 38px);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.audience-card-description {
+  max-width: 540px;
+  margin-bottom: 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.audience-card-lawyer .audience-card-description,
+.audience-card-lawyer .audience-card-items {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.audience-card-items {
+  display: grid;
+  gap: 11px;
+  margin: 24px 0 32px;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  list-style: none;
+}
+
+.audience-card-items li {
+  position: relative;
+  padding-left: 16px;
+}
+
+.audience-card-items li::before {
+  content: "";
+  position: absolute;
+  top: 0.75em;
+  left: 0;
+  width: 8px;
+  height: 1px;
+  background: currentColor;
+}
+
+.audience-card-actions {
+  display: grid;
+  justify-items: start;
+  gap: 16px;
+  margin-top: auto;
+}
+
+.audience-button {
+  min-width: 196px;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 180ms ease, background-color 180ms ease;
+}
+
+.audience-button-student {
+  background: var(--color-navy);
+  color: var(--white);
+}
+
+.audience-button-student:hover {
+  background: var(--purple-dark);
+}
+
+.audience-button-lawyer {
+  background: var(--color-orange);
+  color: var(--color-navy);
+}
+
+.audience-button-lawyer:hover {
+  background: var(--color-amber);
+}
+
+.audience-button-arrow {
+  display: inline-block;
+  transition: transform 180ms ease;
+}
+
+.audience-button:hover .audience-button-arrow,
+.audience-button:focus-visible .audience-button-arrow {
+  transform: translateX(4px);
+}
+
+.audience-secondary {
+  color: var(--color-text-dark);
+  font-size: 14px;
+  text-decoration: none;
+  text-underline-offset: 4px;
+}
+
+.audience-card-student .audience-secondary:hover {
+  text-decoration: underline;
+}
+
+.audience-card-lawyer .audience-secondary {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+.audience-section a:focus-visible {
+  outline: 3px solid var(--color-purple-deep);
+  outline-offset: 4px;
+}
+
+.audience-card-lawyer a:focus-visible {
+  outline-color: var(--color-amber);
+}
+
+@media (min-width: 1024px) and (hover: hover) {
+  .audience-card:hover {
+    transform: translateY(-6px);
+  }
+
+  .audience-card:hover .audience-image {
+    transform: scale(1.04);
+  }
+}
+
+@media (max-width: 1023px) {
+  .audience-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
 }
 
 .cta-section {
@@ -797,8 +917,7 @@ h3 {
     max-width: 580px;
   }
 
-  .value-grid,
-  .audience-grid {
+  .value-grid {
     grid-template-columns: 1fr;
     gap: 44px;
   }
@@ -810,10 +929,6 @@ h3 {
 
   .value-content {
     max-width: 620px;
-  }
-
-  .audience-list {
-    width: 100%;
   }
 
   .footer-grid {
@@ -989,22 +1104,6 @@ h3 {
     top: 49%;
   }
 
-  .orbit-labels {
-    bottom: 0;
-    gap: 8px;
-    justify-content: center;
-    font-size: 8px;
-    letter-spacing: 0.06em;
-  }
-
-  .orbit-labels span {
-    white-space: nowrap;
-  }
-
-  .orbit-labels b {
-    margin-right: 3px;
-  }
-
   .pillars-section,
   .value-section,
   .audience-section {
@@ -1041,8 +1140,7 @@ h3 {
     font-size: 28px;
   }
 
-  .value-grid,
-  .audience-grid {
+  .value-grid {
     gap: 30px;
   }
 
@@ -1054,26 +1152,6 @@ h3 {
   .value-sequence {
     gap: 8px;
     font-size: 9px;
-  }
-
-  .audience-list article {
-    min-height: 0;
-    grid-template-columns: 30px 1fr 32px;
-    gap: 10px;
-    padding: 22px 0;
-  }
-
-  .audience-list h3 {
-    font-size: 22px;
-  }
-
-  .audience-list p {
-    font-size: 13px;
-  }
-
-  .audience-list a {
-    width: 32px;
-    height: 32px;
   }
 
   .cta-section {
@@ -1121,10 +1199,6 @@ h3 {
     font-size: 43px;
   }
 
-  .orbit-labels {
-    font-size: 7px;
-  }
-
   .footer-grid {
     grid-template-columns: 1fr;
   }
@@ -1141,6 +1215,20 @@ h3 {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .audience-card,
+  .audience-image,
+  .audience-button,
+  .audience-button-arrow {
+    transition: none !important;
+  }
+
+  .audience-card:hover,
+  .audience-card:hover .audience-image,
+  .audience-button:hover .audience-button-arrow,
+  .audience-button:focus-visible .audience-button-arrow {
+    transform: none;
   }
 
   *,
