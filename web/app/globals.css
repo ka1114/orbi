@@ -362,7 +362,7 @@ h3 {
 }
 
 .section-heading h2,
-.value-heading h2,
+.topics-heading h2,
 .audience-heading h2,
 .cta-panel h2 {
   margin-bottom: 0;
@@ -500,52 +500,132 @@ h3 {
   transform: translateX(3px);
 }
 
-.value-section {
-  padding: 116px 0;
-  background: var(--lavender);
+.topics-section {
+  --color-purple: var(--purple);
+  --color-orange: var(--orange);
+  --color-text-dark: var(--ink);
+  padding: 96px 0;
+  background: var(--color-bg-light);
 }
 
-.value-grid {
-  display: grid;
-  grid-template-columns: 1fr 0.85fr;
-  gap: 108px;
-  align-items: center;
+.topics-heading {
+  width: min(1200px, calc(100% - 64px));
+  margin: 0 auto 40px;
+  text-align: center;
 }
 
-.value-heading h2 {
-  max-width: 620px;
+.topics-heading h2 {
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-.value-heading em {
+.topics-heading em {
   color: var(--purple);
   font-weight: 400;
 }
 
-.value-content > p {
-  margin-bottom: 36px;
-  color: var(--muted);
-  font-size: 17px;
-  line-height: 1.8;
+.topic-marquees {
+  display: grid;
+  gap: 16px;
 }
 
-.value-sequence {
+.topic-marquee {
+  width: 100%;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+}
+
+.topic-marquee:focus-visible {
+  outline: 2px solid var(--color-purple);
+  outline-offset: -2px;
+}
+
+.topic-track {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding-top: 18px;
-  border-top: 1px solid rgba(79, 50, 143, 0.2);
-  color: var(--purple-dark);
-  font-size: 11px;
-  font-weight: 600;
+  width: max-content;
 }
 
-.value-sequence i {
-  width: 4px;
-  height: 4px;
-  flex: 0 0 4px;
-  background: var(--purple);
+.topic-track-left {
+  animation: topic-scroll-left 45s linear infinite;
+}
+
+.topic-track-right {
+  animation: topic-scroll-right 55s linear infinite;
+}
+
+.topic-set {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  gap: 16px;
+  width: max-content;
+  padding-right: 16px;
+}
+
+.topic-tag {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 24px;
+  border: 1px solid rgba(79, 50, 143, 0.25);
+  border-radius: 0;
+  background: var(--white);
+  color: var(--color-text-dark);
+  cursor: default;
+  font-size: 16px;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.topic-tag::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  flex: 0 0 8px;
+  background: var(--color-purple);
   transform: rotate(45deg);
+}
+
+.topic-marquee-community .topic-tag::before {
+  background: var(--color-orange);
+}
+
+.topic-marquee:hover .topic-track,
+.topic-marquee:focus .topic-track {
+  animation-play-state: paused;
+}
+
+@keyframes topic-scroll-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes topic-scroll-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 .audience-section {
@@ -917,17 +997,7 @@ h3 {
     max-width: 580px;
   }
 
-  .value-grid {
-    grid-template-columns: 1fr;
-    gap: 44px;
-  }
-
-  .value-heading h2,
   .audience-heading h2 {
-    max-width: 620px;
-  }
-
-  .value-content {
     max-width: 620px;
   }
 
@@ -1105,9 +1175,20 @@ h3 {
   }
 
   .pillars-section,
-  .value-section,
   .audience-section {
     padding: 80px 0;
+  }
+
+  .topics-section {
+    padding: 64px 0;
+  }
+
+  .topics-heading {
+    margin-bottom: 32px;
+  }
+
+  .topic-tag {
+    font-size: 14px;
   }
 
   .section-heading {
@@ -1116,7 +1197,7 @@ h3 {
   }
 
   .section-heading h2,
-  .value-heading h2,
+  .topics-heading h2,
   .audience-heading h2 {
     font-size: clamp(38px, 10vw, 50px);
   }
@@ -1138,20 +1219,6 @@ h3 {
 
   .pillar h3 {
     font-size: 28px;
-  }
-
-  .value-grid {
-    gap: 30px;
-  }
-
-  .value-content > p {
-    margin-bottom: 28px;
-    font-size: 15px;
-  }
-
-  .value-sequence {
-    gap: 8px;
-    font-size: 9px;
   }
 
   .cta-section {
@@ -1229,6 +1296,23 @@ h3 {
   .audience-button:hover .audience-button-arrow,
   .audience-button:focus-visible .audience-button-arrow {
     transform: none;
+  }
+
+  .topic-track {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .topic-marquee {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-mask-image: none;
+    mask-image: none;
+    scrollbar-width: thin;
+  }
+
+  .topic-set[aria-hidden="true"] {
+    display: none;
   }
 
   *,

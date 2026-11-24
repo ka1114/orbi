@@ -38,6 +38,35 @@ const pillars = [
   },
 ];
 
+const classAndServiceTopics = [
+  "Derecho penal",
+  "Derecho laboral",
+  "Derecho civil",
+  "Derecho comercial",
+  "Derecho administrativo",
+  "Derecho de familia",
+  "Derecho constitucional",
+  "Clases individuales",
+  "Paquetes de formación",
+  "Asesorías jurídicas",
+  "Mentorías entre abogados",
+  "Redacción de documentos",
+  "Minutas jurídicas",
+];
+
+const communityTopics = [
+  "Círculos de estudio",
+  "Clubes jurídicos",
+  "Clubes de lectura jurídica",
+  "Conversatorios con expertos",
+  "Laboratorios jurídicos",
+  "Mesas de discusión",
+  "Talleres prácticos",
+  "Seminarios especializados",
+  "Mentorías grupales",
+  "Networking académico",
+];
+
 export default function Home() {
   return (
     <>
@@ -171,26 +200,61 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="value-section" aria-labelledby="value-title">
-          <div className="section-shell value-grid">
-            <div className="value-heading">
-              <p className="eyebrow">Una mirada integral</p>
-              <h2 id="value-title">
-                El conocimiento crece cuando <em>circula.</em>
-              </h2>
+        <section
+          className="topics-section"
+          aria-label="Áreas del derecho, servicios y comunidad jurídica"
+        >
+          <div className="section-shell topics-heading">
+            <p className="eyebrow">Todo en un solo lugar</p>
+            <h2>
+              Clases, asesorías y <em>comunidad</em> jurídica.
+            </h2>
+          </div>
+          <div className="topic-marquees">
+            <div
+              className="topic-marquee topic-marquee-services"
+              role="region"
+              aria-label="Clases y servicios jurídicos"
+              tabIndex={0}
+            >
+              <div className="topic-track topic-track-left">
+                <div className="topic-set">
+                  {classAndServiceTopics.map((topic) => (
+                    <span className="topic-tag" key={topic}>
+                      {topic}
+                    </span>
+                  ))}
+                </div>
+                <div className="topic-set" aria-hidden="true">
+                  {classAndServiceTopics.map((topic) => (
+                    <span className="topic-tag" key={topic}>
+                      {topic}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
-            <div className="value-content">
-              <p>
-                Aprender, buscar orientación y compartir ideas son parte de un
-                mismo camino. ORBI conecta estas experiencias para acercar el
-                conocimiento jurídico a quienes quieren seguir creciendo.
-              </p>
-              <div className="value-sequence" aria-label="Los pilares de ORBI">
-                <span>Aprendizaje</span>
-                <i aria-hidden="true" />
-                <span>Especialización</span>
-                <i aria-hidden="true" />
-                <span>Comunidad</span>
+            <div
+              className="topic-marquee topic-marquee-community"
+              role="region"
+              aria-label="Actividades de la comunidad académica"
+              tabIndex={0}
+            >
+              <div className="topic-track topic-track-right">
+                <div className="topic-set">
+                  {communityTopics.map((topic) => (
+                    <span className="topic-tag" key={topic}>
+                      {topic}
+                    </span>
+                  ))}
+                </div>
+                <div className="topic-set" aria-hidden="true">
+                  {communityTopics.map((topic) => (
+                    <span className="topic-tag" key={topic}>
+                      {topic}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
