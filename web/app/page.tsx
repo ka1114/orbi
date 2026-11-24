@@ -102,7 +102,15 @@ export default function Home() {
                 <circle cx="686" cy="70" r="5" fill="#F0A168" />
                 <circle cx="626" cy="188" r="4" fill="#BCA4F5" />
               </svg>
-              <span className="orbit-wordmark">orbi</span>
+              <span className="orbit-wordmark">
+                <Image
+                  src="/orbi-logo-white.png"
+                  alt=""
+                  width={272}
+                  height={327}
+                  sizes="155px"
+                />
+              </span>
               <div className="orbit-labels">
                 {pillars.map((pillar) => (
                   <span key={pillar.number}>
